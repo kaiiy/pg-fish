@@ -6,16 +6,24 @@ RUN apt-get install -y \
     curl \
     git 
 
+RUN useradd -m dev
+
+RUN mkdir -p /home/linuxbrew/.linuxbrew
+RUN chown -R dev:dev /home/linuxbrew/.linuxbrew
+RUN chmod -R 755 /home/linuxbrew/.linuxbrew
+
+USER dev
+
 RUN yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ENV PATH $PATH:/home/linuxbrew/.linuxbrew/bin
 
 RUN brew install gcc fish
 RUN fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 
-WORKDIR /
+WORKDIR /home/dev/
 RUN git clone https://github.com/kaiiy/dotfiles.git
 
-WORKDIR /dotfiles
+WORKDIR /home/dev/dotfiles
 RUN ./link.sh
 RUN brew bundle --file=./etc/brew/Brewfile
 RUN fish -c "fisher update"
