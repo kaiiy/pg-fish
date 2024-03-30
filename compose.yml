@@ -2,8 +2,8 @@ services:
   pg-fish:
     container_name: pg-fish
     tty: true
-    image: pg-fish
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/kaiiy/pg-fish:latest
+    # build:
+      # context: .
+      # dockerfile: Dockerfile
     working_dir: /home/dev/
