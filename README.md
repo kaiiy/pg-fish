@@ -3,7 +3,6 @@
 Playground
 
 ```sh
-$ docker compose up -d --build
-$ docker compose exec pg-fish bash
-> bash
+$ docker compose up -d
+$ docker compose exec pg-fish fish
 ```
