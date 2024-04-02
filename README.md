@@ -1,8 +1,8 @@
 # pg-fish
 
-Playground
+dotfiles playgound
 
 ```sh
-$ docker compose up -d
-$ docker compose exec pg-fish fish
+$ docker run -it ghcr.io/kaiiy/pg-fish:latest fish
+> fish
 ```
